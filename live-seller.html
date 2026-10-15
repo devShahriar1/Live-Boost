@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Seller - Travailler ou Devenir un Live Seller | LiveBoost</title>
+    <meta name="description" content="Travaillez avec un Live Seller pour vos ventes en direct, ou devenez-en un. Remplissez le formulaire adapté à votre profil.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --white: #FFFFFF; --electric-blue: #1E90FF; --dark-navy: #0F1F40; --black: #171717; --light-blue: #ECF8FF; --light-grey: #E5E7E8; }
+        * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); margin: 0; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+        .text-blue { color: var(--electric-blue); }
+        .bg-navy { background-color: var(--dark-navy); }
+        .bg-light-blue { background-color: var(--light-blue); }
+        .btn-primary { background: var(--electric-blue); color: white; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; text-decoration: none; width: 100%; justify-content: center; }
+        .btn-primary:hover { background: #1873cc; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(30, 144, 255, 0.35); }
+        .btn-secondary { background: var(--black); color: white; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; transition: all 0.25s; text-decoration: none; }
+        .label-blue { color: var(--electric-blue); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+        .card { background: white; border: 1px solid var(--light-grey); border-radius: 16px; transition: all 0.3s; }
+        .form-input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--light-grey); border-radius: 12px; font-size: 15px; background: white; font-family: 'Inter', sans-serif; color: var(--black); }
+        .form-input:focus { outline: none; border-color: var(--electric-blue); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.12); }
+        .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+        .play-triangle { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent white; margin-left: 2px; }
+        .menu-panel { transform: translateY(-100%); opacity: 0; pointer-events: none; transition: all 0.3s; }
+        .menu-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .nav-link { color: var(--black); font-weight: 500; font-size: 15px; transition: color 0.2s; cursor: pointer; text-decoration: none; display: block; padding: 10px 0; }
+        .nav-link:hover { color: var(--electric-blue); }
+        .tab-btn { padding: 14px 32px; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.25s; cursor: pointer; border: 1.5px solid var(--light-grey); background: white; color: var(--black); }
+        .tab-btn.active { background: var(--black); color: white; border-color: var(--black); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .feature-icon-box { width: 48px; height: 48px; border-radius: 12px; background: rgba(30, 144, 255, 0.1); display: flex; align-items: center; justify-content: center; color: var(--electric-blue); }
+        .step-number { width: 44px; height: 44px; border-radius: 12px; background: var(--light-blue); color: var(--electric-blue); font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; }
+        .success-message { display: none; padding: 16px 20px; border-radius: 12px; background: var(--light-blue); border: 1px solid var(--electric-blue); color: var(--dark-navy); font-weight: 500; margin-top: 16px; }
+        .success-message.show { display: block; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b" style="border-color: var(--light-grey);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="flex items-center justify-between h-[72px]">
+            <button onclick="toggleMenu()" class="p-2 -ml-2 hover:bg-gray-50 rounded-lg transition"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            <a href="index.html" class="flex items-center gap-2 absolute left-1/2 -translate-x-1/2"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--electric-blue);"><div class="play-triangle"></div></div><span class="text-xl font-bold">LiveBoost</span></a>
+            <div class="flex items-center gap-3"><button class="p-2 hover:bg-gray-50 rounded-lg transition"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button><a href="website-design.html#website-contact" class="btn-secondary">Nous contacter</a></div>
+        </div>
+    </div>
+    <div id="menuPanel" class="menu-panel absolute top-full left-0 right-0 bg-white border-b shadow-lg" style="border-color: var(--light-grey);">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 py-6">
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-1">
+                <a href="index.html" class="nav-link">Accueil</a><a href="livebeat-tv.html" class="nav-link">Livebeat TV</a><a href="live-seller.html#creator" class="nav-link">Devenir Live Seller</a><a href="live-seller.html#brand" class="nav-link">Travailler avec un Live Seller</a><a href="website-design.html" class="nav-link">Création de site internet</a><a href="website-design.html#website-contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- HERO & TABS -->
+<section class="max-w-7xl mx-auto px-5 lg:px-8 pt-12 lg:pt-20 pb-10">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+        <p class="label-blue mb-4">Live Sellers</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-5">Travaillez avec un Live Seller ou devenez-en un.</h1>
+    </div>
+    <div class="flex justify-center gap-3 mb-12">
+        <button class="tab-btn active" id="tab-brand-btn" onclick="showTab('brand')">Pour les marques</button>
+        <button class="tab-btn" id="tab-creator-btn" onclick="showTab('creator')">Pour les créateurs</button>
+    </div>
+</section>
+
+<!-- TAB 1: BRANDS -->
+<div id="tab-brand" class="tab-content active">
+    <section id="brand" class="max-w-3xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+        <div class="text-center mb-10">
+            <p class="label-blue mb-3">Demande de contact</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Trouvez votre Live Seller</h2>
+        </div>
+        <form class="bg-white card p-8 lg:p-10" onsubmit="handleBrandForm(event)">
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Nom de la marque</label><input type="text" required class="form-input" placeholder="Votre marque"></div>
+                <div><label class="form-label">Secteur</label><select required class="form-input"><option value="">Sélectionnez...</option><option>Beauté</option><option>Mode</option><option>Maison</option></select></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Email</label><input type="email" required class="form-input" placeholder="contact@marque.com"></div>
+                <div><label class="form-label">Téléphone</label><input type="tel" required class="form-input" placeholder="+33 6..."></div>
+            </div>
+            <div class="mb-5"><label class="form-label">Budget</label><select class="form-input"><option value="">Sélectionnez...</option><option>1K-5K€</option><option>5K-10K€</option></select></div>
+            <div class="mb-6"><label class="form-label">Message</label><textarea rows="4" class="form-input" placeholder="Objectifs..."></textarea></div>
+            <button type="submit" class="btn-primary">Trouver un Live Seller</button>
+            <div class="success-message" id="brandSuccess">✅ Merci ! Votre demande a été envoyée.</div>
+        </form>
+    </section>
+</div>
+
+<!-- TAB 2: CREATORS -->
+<div id="tab-creator" class="tab-content">
+    <section id="creator" class="max-w-3xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+        <div class="text-center mb-10">
+            <p class="label-blue mb-3">Candidature</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Devenir Live Seller</h2>
+        </div>
+        <form class="bg-white card p-8 lg:p-10" onsubmit="handleCreatorForm(event)">
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Nom complet</label><input type="text" required class="form-input" placeholder="Votre nom"></div>
+                <div><label class="form-label">Email</label><input type="email" required class="form-input" placeholder="vous@exemple.com"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Téléphone</label><input type="tel" required class="form-input" placeholder="+33 6..."></div>
+                <div><label class="form-label">Niche</label><select required class="form-input"><option value="">Sélectionnez...</option><option>Beauté</option><option>Mode</option></select></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Lien Instagram</label><input type="url" class="form-input" placeholder="https://instagram.com/..."></div>
+                <div><label class="form-label">Lien TikTok</label><input type="url" class="form-input" placeholder="https://tiktok.com/@..."></div>
+            </div>
+            <div class="mb-6"><label class="form-label">Message</label><textarea rows="4" class="form-input" placeholder="Parlez-nous de vous..."></textarea></div>
+            <button type="submit" class="btn-primary">Devenir Live Seller</button>
+            <div class="success-message" id="creatorSuccess">✅ Merci pour votre candidature !</div>
+        </form>
+    </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-navy text-white" style="background: var(--dark-navy);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
+            <div><div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--electric-blue);"><div class="play-triangle"></div></div><span class="text-xl font-bold">LiveBoost</span></div><p class="text-sm text-gray-400">Des créateurs qui font vendre vos produits.</p></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Navigation</h4><ul class="space-y-3"><li><a href="index.html" class="text-sm text-gray-400 hover:text-white">Accueil</a></li><li><a href="livebeat-tv.html" class="text-sm text-gray-400 hover:text-white">Livebeat TV</a></li><li><a href="live-seller.html#brand" class="text-sm text-gray-400 hover:text-white">Travailler avec un Live Seller</a></li><li><a href="live-seller.html#creator" class="text-sm text-gray-400 hover:text-white">Devenir Live Seller</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Services</h4><ul class="space-y-3"><li><a href="livebeat-tv.html" class="text-sm text-gray-400 hover:text-white">Livebeat TV</a></li><li><a href="website-design.html" class="text-sm text-gray-400 hover:text-white">Création de site internet</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Contact</h4><p class="text-sm text-gray-400 mb-2">contact@liveboost.fr</p><p class="text-sm text-gray-400">+33 1 00 00 00 00</p></div>
+        </div>
+        <div class="border-t pt-6" style="border-color: rgba(255,255,255,0.1);"><p class="text-sm text-gray-500">© 2025 LiveBoost. Tous droits réservés.</p></div>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() { document.getElementById('menuPanel').classList.toggle('open'); }
+    function showTab(tab) {
+        document.getElementById('tab-brand').classList.toggle('active', tab === 'brand');
+        document.getElementById('tab-creator').classList.toggle('active', tab === 'creator');
+        document.getElementById('tab-brand-btn').classList.toggle('active', tab === 'brand');
+        document.getElementById('tab-creator-btn').classList.toggle('active', tab === 'creator');
+    }
+    // Check URL hash on load
+    window.onload = function() {
+        const hash = window.location.hash.substring(1);
+        if (hash === 'creator') showTab('creator');
+        else showTab('brand');
+    };
+    function handleBrandForm(event) {
+        event.preventDefault();
+        document.getElementById('brandSuccess').classList.add('show');
+        event.target.reset();
+    }
+    function handleCreatorForm(event) {
+        event.preventDefault();
+        document.getElementById('creatorSuccess').classList.add('show');
+        event.target.reset();
+    }
+</script>
+</body>
+</html>

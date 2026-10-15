@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création de site internet professionnel | LiveBoost</title>
+    <meta name="description" content="Des sites web modernes et performants pour développer votre marque. E-commerce, WordPress, SEO. Demandez votre devis gratuit.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --white: #FFFFFF; --electric-blue: #1E90FF; --dark-navy: #0F1F40; --black: #171717; --light-blue: #ECF8FF; --light-grey: #E5E7E8; }
+        * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); margin: 0; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+        .text-blue { color: var(--electric-blue); }
+        .bg-navy { background-color: var(--dark-navy); }
+        .bg-light-blue { background-color: var(--light-blue); }
+        .btn-primary { background: var(--electric-blue); color: white; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; text-decoration: none; width: 100%; justify-content: center; }
+        .btn-primary:hover { background: #1873cc; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(30, 144, 255, 0.35); }
+        .btn-outline { background: transparent; color: var(--black); border: 1.5px solid var(--light-grey); padding: 12px 26px; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; text-decoration: none; width: 100%; justify-content: center; }
+        .btn-outline:hover { border-color: var(--black); background: var(--black); color: white; }
+        .btn-secondary { background: var(--black); color: white; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; transition: all 0.25s; text-decoration: none; }
+        .label-blue { color: var(--electric-blue); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+        .card { background: white; border: 1px solid var(--light-grey); border-radius: 16px; transition: all 0.3s; }
+        .card:hover { border-color: var(--electric-blue); transform: translateY(-4px); }
+        .form-input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--light-grey); border-radius: 12px; font-size: 15px; background: white; font-family: 'Inter', sans-serif; color: var(--black); }
+        .form-input:focus { outline: none; border-color: var(--electric-blue); box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.12); }
+        .form-label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+        .play-triangle { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent white; margin-left: 2px; }
+        .menu-panel { transform: translateY(-100%); opacity: 0; pointer-events: none; transition: all 0.3s; }
+        .menu-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .nav-link { color: var(--black); font-weight: 500; font-size: 15px; transition: color 0.2s; cursor: pointer; text-decoration: none; display: block; padding: 10px 0; }
+        .nav-link:hover { color: var(--electric-blue); }
+        .service-icon-box { width: 52px; height: 52px; border-radius: 14px; background: var(--light-blue); display: flex; align-items: center; justify-content: center; color: var(--electric-blue); }
+        .step-number { width: 44px; height: 44px; border-radius: 12px; background: var(--light-blue); color: var(--electric-blue); font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; }
+        .pricing-card { border: 1.5px solid var(--light-grey); border-radius: 20px; padding: 36px 30px; transition: all 0.3s; background: white; }
+        .pricing-card.featured { border-color: var(--electric-blue); border-width: 2px; }
+        .success-message { display: none; padding: 16px 20px; border-radius: 12px; background: var(--light-blue); border: 1px solid var(--electric-blue); color: var(--dark-navy); font-weight: 500; margin-top: 16px; }
+        .success-message.show { display: block; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b" style="border-color: var(--light-grey);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="flex items-center justify-between h-[72px]">
+            <button onclick="toggleMenu()" class="p-2 -ml-2 hover:bg-gray-50 rounded-lg transition"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            <a href="index.html" class="flex items-center gap-2 absolute left-1/2 -translate-x-1/2"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--electric-blue);"><div class="play-triangle"></div></div><span class="text-xl font-bold">LiveBoost</span></a>
+            <div class="flex items-center gap-3"><button class="p-2 hover:bg-gray-50 rounded-lg transition"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button><a href="#website-contact" class="btn-secondary">Nous contacter</a></div>
+        </div>
+    </div>
+    <div id="menuPanel" class="menu-panel absolute top-full left-0 right-0 bg-white border-b shadow-lg" style="border-color: var(--light-grey);">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 py-6">
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-1">
+                <a href="index.html" class="nav-link">Accueil</a><a href="livebeat-tv.html" class="nav-link">Livebeat TV</a><a href="live-seller.html#creator" class="nav-link">Devenir Live Seller</a><a href="live-seller.html#brand" class="nav-link">Travailler avec un Live Seller</a><a href="website-design.html" class="nav-link">Création de site internet</a><a href="#website-contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="max-w-7xl mx-auto px-5 lg:px-8 pt-12 lg:pt-20 pb-16">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+            <p class="label-blue mb-5">Création de site internet</p>
+            <h1 class="text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.05] mb-6">Création de site internet <span class="text-blue">professionnel</span></h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">Des sites web modernes et performants pour développer votre marque en ligne.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#website-contact" class="btn-primary" style="width: auto;">Démarrer mon projet</a>
+                <a href="#pricing-section" class="btn-outline" style="width: auto;">Voir les tarifs</a>
+            </div>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80" alt="Design web" class="w-full h-[420px] md:h-[480px] object-cover">
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section class="max-w-7xl mx-auto px-5 lg:px-8 py-16">
+    <div class="text-center mb-12"><p class="label-blue mb-3">Nos services</p><h2 class="text-3xl md:text-4xl font-bold">Tout pour votre présence en ligne</h2></div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card p-7"><div class="service-icon-box mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div><h3 class="font-bold text-lg mb-2">Website Design</h3><p class="text-sm text-gray-500">Design moderne et sur-mesure.</p></div>
+        <div class="card p-7"><div class="service-icon-box mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h3 class="font-bold text-lg mb-2">WordPress</h3><p class="text-sm text-gray-500">Développement WordPress performant.</p></div>
+        <div class="card p-7"><div class="service-icon-box mb-5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><h3 class="font-bold text-lg mb-2">E-commerce</h3><p class="text-sm text-gray-500">Boutique en ligne complète.</p></div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="bg-light-blue py-16 lg:py-20" style="background: var(--light-blue);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-12"><p class="label-blue mb-3">Notre méthode</p><h2 class="text-3xl md:text-4xl font-bold">Notre processus</h2></div>
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="bg-white rounded-2xl p-7"><div class="step-number mb-5">1</div><h3 class="font-bold text-lg mb-2">Consultation</h3></div>
+            <div class="bg-white rounded-2xl p-7"><div class="step-number mb-5">2</div><h3 class="font-bold text-lg mb-2">Design</h3></div>
+            <div class="bg-white rounded-2xl p-7"><div class="step-number mb-5">3</div><h3 class="font-bold text-lg mb-2">Développement</h3></div>
+            <div class="bg-white rounded-2xl p-7"><div class="step-number mb-5">4</div><h3 class="font-bold text-lg mb-2">Lancement</h3></div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing-section" class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="text-center mb-12"><p class="label-blue mb-3">Tarifs</p><h2 class="text-3xl md:text-4xl font-bold">Nos offres</h2></div>
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="pricing-card"><h3 class="font-bold text-lg mb-1">Starter</h3><p class="text-4xl font-bold mb-1">1 490€</p><button onclick="scrollToContact()" class="btn-outline mt-8">Choisir</button></div>
+        <div class="pricing-card featured"><h3 class="font-bold text-lg mb-1">Business</h3><p class="text-4xl font-bold mb-1">3 490€</p><button onclick="scrollToContact()" class="btn-primary mt-8">Choisir</button></div>
+        <div class="pricing-card"><h3 class="font-bold text-lg mb-1">Premium</h3><p class="text-4xl font-bold mb-1">Sur devis</p><button onclick="scrollToContact()" class="btn-outline mt-8">Demander un devis</button></div>
+    </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section id="website-contact" class="bg-light-blue py-16 lg:py-20" style="background: var(--light-blue);">
+    <div class="max-w-3xl mx-auto px-5 lg:px-8">
+        <div class="text-center mb-10"><p class="label-blue mb-3">Contact</p><h2 class="text-3xl md:text-4xl font-bold mb-4">Demandez votre devis gratuit</h2></div>
+        <form class="bg-white rounded-2xl p-8 lg:p-10 shadow-sm" onsubmit="handleWebsiteForm(event)">
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Nom complet</label><input type="text" required class="form-input" placeholder="Votre nom"></div>
+                <div><label class="form-label">Entreprise</label><input type="text" class="form-input" placeholder="Nom de l'entreprise"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-5 mb-5">
+                <div><label class="form-label">Email</label><input type="email" required class="form-input" placeholder="vous@entreprise.com"></div>
+                <div><label class="form-label">Téléphone</label><input type="tel" class="form-input" placeholder="+33 6..."></div>
+            </div>
+            <div class="mb-5"><label class="form-label">Budget</label><select class="form-input"><option value="">Sélectionnez...</option><option>Moins de 2 000€</option><option>2 000€ - 5 000€</option></select></div>
+            <div class="mb-6"><label class="form-label">Description du projet</label><textarea rows="5" required class="form-input" placeholder="Décrivez votre projet..."></textarea></div>
+            <button type="submit" class="btn-primary">Envoyer ma demande</button>
+            <div class="success-message" id="websiteSuccess">✅ Merci ! Votre demande de devis a été envoyée.</div>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-navy text-white" style="background: var(--dark-navy);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
+            <div><div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--electric-blue);"><div class="play-triangle"></div></div><span class="text-xl font-bold">LiveBoost</span></div><p class="text-sm text-gray-400">Des sites web modernes pour votre marque.</p></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Navigation</h4><ul class="space-y-3"><li><a href="index.html" class="text-sm text-gray-400 hover:text-white">Accueil</a></li><li><a href="livebeat-tv.html" class="text-sm text-gray-400 hover:text-white">Livebeat TV</a></li><li><a href="live-seller.html#brand" class="text-sm text-gray-400 hover:text-white">Live Sellers</a></li><li><a href="website-design.html" class="text-sm text-gray-400 hover:text-white">Création de site</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Services</h4><ul class="space-y-3"><li><a href="#pricing-section" class="text-sm text-gray-400 hover:text-white">Tarifs</a></li><li><a href="#website-contact" class="text-sm text-gray-400 hover:text-white">Devis gratuit</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Contact</h4><p class="text-sm text-gray-400 mb-2">contact@liveboost.fr</p><p class="text-sm text-gray-400">+33 1 00 00 00 00</p></div>
+        </div>
+        <div class="border-t pt-6" style="border-color: rgba(255,255,255,0.1);"><p class="text-sm text-gray-500">© 2025 LiveBoost. Tous droits réservés.</p></div>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() { document.getElementById('menuPanel').classList.toggle('open'); }
+    function scrollToContact() { document.getElementById('website-contact').scrollIntoView({ behavior: 'smooth' }); }
+    function handleWebsiteForm(event) {
+        event.preventDefault();
+        document.getElementById('websiteSuccess').classList.add('show');
+        event.target.reset();
+    }
+</script>
+</body>
+</html>

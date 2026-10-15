@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livebeat TV - Shows en direct | LiveBoost</title>
+    <meta name="description" content="Découvrez Livebeat TV, la plateforme vidéo de LiveBoost. Shows en direct, créateurs de contenu et live commerce.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --white: #FFFFFF; --electric-blue: #1E90FF; --dark-navy: #0F1F40; --black: #171717; --light-blue: #ECF8FF; --light-grey: #E5E7E8; }
+        * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); margin: 0; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+        .text-blue { color: var(--electric-blue); }
+        .bg-navy { background-color: var(--dark-navy); }
+        .bg-light-blue { background-color: var(--light-blue); }
+        .btn-primary { background: var(--electric-blue); color: white; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.25s; display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer; text-decoration: none; }
+        .btn-primary:hover { background: #1873cc; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(30, 144, 255, 0.35); }
+        .btn-secondary { background: var(--black); color: white; padding: 10px 20px; border-radius: 12px; font-weight: 600; font-size: 14px; transition: all 0.25s; text-decoration: none; }
+        .btn-outline-light { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.25); padding: 12px 26px; border-radius: 12px; font-weight: 600; font-size: 15px; text-decoration: none; }
+        .label-blue { color: var(--electric-blue); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+        .play-triangle { width: 0; height: 0; border-style: solid; border-width: 8px 0 8px 13px; border-color: transparent transparent transparent white; margin-left: 2px; }
+        .menu-panel { transform: translateY(-100%); opacity: 0; pointer-events: none; transition: all 0.3s; }
+        .menu-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .nav-link { color: var(--black); font-weight: 500; font-size: 15px; transition: color 0.2s; cursor: pointer; text-decoration: none; display: block; padding: 10px 0; }
+        .nav-link:hover { color: var(--electric-blue); }
+        .video-card { border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.3s; background: white; border: 1px solid var(--light-grey); }
+        .video-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(15, 31, 64, 0.1); border-color: var(--electric-blue); }
+        .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(15, 31, 64, 0.2); opacity: 0; transition: opacity 0.3s; }
+        .video-card:hover .play-overlay { opacity: 1; }
+        .play-circle { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.95); display: flex; align-items: center; justify-content: center; }
+        .badge-live { background: var(--electric-blue); color: white; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b" style="border-color: var(--light-grey);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="flex items-center justify-between h-[72px]">
+            <button onclick="toggleMenu()" class="p-2 -ml-2 hover:bg-gray-50 rounded-lg transition"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+            <a href="index.html" class="flex items-center gap-2 absolute left-1/2 -translate-x-1/2"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--electric-blue);"><div class="play-triangle"></div></div><span class="text-xl font-bold">LiveBoost</span></a>
+            <div class="flex items-center gap-3"><button class="p-2 hover:bg-gray-50 rounded-lg transition"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button><a href="website-design.html#website-contact" class="btn-secondary">Nous contacter</a></div>
+        </div>
+    </div>
+    <div id="menuPanel" class="menu-panel absolute top-full left-0 right-0 bg-white border-b shadow-lg" style="border-color: var(--light-grey);">
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 py-6">
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-1">
+                <a href="index.html" class="nav-link">Accueil</a><a href="livebeat-tv.html" class="nav-link">Livebeat TV</a><a href="live-seller.html#creator" class="nav-link">Devenir Live Seller</a><a href="live-seller.html#brand" class="nav-link">Travailler avec un Live Seller</a><a href="website-design.html" class="nav-link">Création de site internet</a><a href="website-design.html#website-contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="bg-navy relative overflow-hidden" style="background: var(--dark-navy);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-20 lg:py-28">
+        <div class="max-w-3xl">
+            <p class="label-blue mb-4" style="color: #5cb3ff;">LiveBoost TV</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Livebeat <span class="text-blue">TV</span></h1>
+            <p class="text-lg text-gray-300 max-w-xl leading-relaxed mb-8">Des shows vidéo en direct hébergés sur notre plateforme. Découvrez nos émissions, nos créateurs et le meilleur du live commerce en un seul endroit.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="live-seller.html#creator" class="btn-primary">Devenir Live Seller</a>
+                <a href="live-seller.html#brand" class="btn-outline-light">Travailler avec nous</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO SHOWCASE -->
+<section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="mb-10"><p class="label-blue mb-3">Nos émissions</p><h2 class="text-3xl md:text-4xl font-bold">Dernières vidéos</h2></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="video-card">
+            <div class="relative h-52 overflow-hidden"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Vidéo 1" class="w-full h-full object-cover"><div class="play-overlay"><div class="play-circle"><div class="play-triangle"></div></div></div><div class="absolute top-3 left-3 badge-live">LIVE</div></div>
+            <div class="p-5"><h3 class="font-bold mb-1">Beauty Show — Episode 12</h3><p class="text-sm text-gray-500 mb-3">Découverte des nouveaux soins de la marque Glow.</p></div>
+        </div>
+        <div class="video-card">
+            <div class="relative h-52 overflow-hidden"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Vidéo 2" class="w-full h-full object-cover"><div class="play-overlay"><div class="play-circle"><div class="play-triangle"></div></div></div></div>
+            <div class="p-5"><h3 class="font-bold mb-1">Fashion Picks — Hiver 2025</h3><p class="text-sm text-gray-500 mb-3">Les tendances mode de la saison par Amina.</p></div>
+        </div>
+        <div class="video-card">
+            <div class="relative h-52 overflow-hidden"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Vidéo 3" class="w-full h-full object-cover"><div class="play-overlay"><div class="play-circle"><div class="play-triangle"></div></div></div></div>
+            <div class="p-5"><h3 class="font-bold mb-1">Home Stories — Déco automne</h3><p class="text-sm text-gray-500 mb-3">Astuces déco et sélection maison par Leïla.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="max-w-7xl mx-auto px-5 lg:px-8 py-16 lg:py-20">
+    <div class="bg-navy rounded-3xl p-10 lg:p-16 text-center" style="background: var(--dark-navy);">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-5">Envie de rejoindre Livebeat TV ?</h2>
+        <p class="text-gray-300 max-w-xl mx-auto mb-8">Devenez Live Seller et animez vos propres émissions sur notre plateforme.</p>
+        <a href="live-seller.html#creator" class="btn-primary">Devenir Live Seller</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-navy text-white" style="background: var(--dark-navy);">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+        <div class="grid md:grid-cols-4 gap-10 mb-12">
+            <div><div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: var(--electric-blue);"><div class="play-triangle"></div></div><span class="text-xl font-bold">LiveBoost</span></div><p class="text-sm text-gray-400">Des créateurs qui font vendre vos produits.</p></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Navigation</h4><ul class="space-y-3"><li><a href="index.html" class="text-sm text-gray-400 hover:text-white">Accueil</a></li><li><a href="livebeat-tv.html" class="text-sm text-gray-400 hover:text-white">Livebeat TV</a></li><li><a href="live-seller.html#brand" class="text-sm text-gray-400 hover:text-white">Travailler avec un Live Seller</a></li><li><a href="live-seller.html#creator" class="text-sm text-gray-400 hover:text-white">Devenir Live Seller</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Services</h4><ul class="space-y-3"><li><a href="livebeat-tv.html" class="text-sm text-gray-400 hover:text-white">Livebeat TV</a></li><li><a href="website-design.html" class="text-sm text-gray-400 hover:text-white">Création de site internet</a></li></ul></div>
+            <div><h4 class="font-bold mb-4 text-sm uppercase text-gray-300">Contact</h4><p class="text-sm text-gray-400 mb-2">contact@liveboost.fr</p><p class="text-sm text-gray-400">+33 1 00 00 00 00</p></div>
+        </div>
+        <div class="border-t pt-6" style="border-color: rgba(255,255,255,0.1);"><p class="text-sm text-gray-500">© 2025 LiveBoost. Tous droits réservés.</p></div>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() { document.getElementById('menuPanel').classList.toggle('open'); }
+</script>
+</body>
+</html>
