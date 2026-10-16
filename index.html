@@ -12,7 +12,7 @@
     <style>
         :root { --white: #FFFFFF; --electric-blue: #1E90FF; --dark-navy: #0F1F40; --black: #171717; --light-blue: #ECF8FF; --light-grey: #E5E7E8; }
         * { -webkit-font-smoothing: antialiased; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); margin: 0; }
+        body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); margin: 0; padding-bottom: 70px; /* Padding for mobile sticky bar */ }
         h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
         .text-blue { color: var(--electric-blue); }
         .bg-blue { background-color: var(--electric-blue); }
@@ -38,6 +38,22 @@
         .badge-live::before { content: ''; width: 6px; height: 6px; background: white; border-radius: 50%; display: inline-block; }
         .success-message { display: none; padding: 16px 20px; border-radius: 12px; background: var(--light-blue); border: 1px solid var(--electric-blue); color: var(--dark-navy); font-weight: 500; margin-top: 16px; }
         .success-message.show { display: block; }
+        
+        /* Brand Logo Card Styles */
+        .brand-logo-card {
+            background: white; border: 1px solid var(--light-grey); border-radius: 16px;
+            padding: 24px; display: flex; align-items: center; justify-content: center; height: 120px;
+            transition: all 0.3s ease; text-decoration: none; font-weight: 700; font-size: 24px;
+            color: #9ca3af; font-family: 'Space Grotesk', sans-serif;
+        }
+        .brand-logo-card:hover {
+            border-color: var(--electric-blue); color: var(--black); 
+            transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+        }
+
+        /* Mobile Sticky Bar */
+        .mobile-sticky-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--light-grey); padding: 10px; z-index: 50; gap: 10px; }
+        @media (max-width: 768px) { .mobile-sticky-bar { display: flex; } }
     </style>
 </head>
 <body>
@@ -57,7 +73,7 @@
                 <button class="p-2 hover:bg-gray-50 rounded-lg transition" aria-label="Recherche">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
-                <a href="website-design.html#website-contact" class="btn-secondary">Nous contacter</a>
+                <a href="website-design.html#website-contact" class="btn-secondary hidden md:inline-flex">Nous contacter</a>
             </div>
         </div>
     </div>
@@ -103,6 +119,22 @@
             <div class="flex flex-col gap-3"><div class="feature-icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><p class="font-semibold text-sm">Une audience engagée</p></div>
             <div class="flex flex-col gap-3"><div class="feature-icon-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9z"/></svg></div><p class="font-semibold text-sm">Un accompagnement de A à Z</p></div>
         </div>
+    </div>
+</section>
+
+<!-- BRAND LOGOS SECTION (Hairlia, PalmCare, Endko) -->
+<section class="max-w-7xl mx-auto px-5 lg:px-8 py-12">
+    <div class="text-center mb-8">
+        <p class="label-blue mb-2">Ils nous font confiance</p>
+        <h2 class="text-2xl md:text-3xl font-bold">Nos marques partenaires</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Hairlia (Placeholder link) -->
+        <a href="#" target="_blank" class="brand-logo-card">Hairlia</a>
+        <!-- PalmCare -->
+        <a href="https://ec28ca.myshopify.com/products/palmcare" target="_blank" class="brand-logo-card">PalmCare</a>
+        <!-- Endko -->
+        <a href="https://endko.com/collections/spray-stop-sucre" target="_blank" class="brand-logo-card">Endko</a>
     </div>
 </section>
 
@@ -193,6 +225,17 @@
         <div class="border-t pt-6" style="border-color: rgba(255,255,255,0.1);"><p class="text-sm text-gray-500">© 2025 LiveBoost. Tous droits réservés.</p></div>
     </div>
 </footer>
+
+<!-- MOBILE STICKY BAR (For "Le téléphone faut qu'on voit bien") -->
+<div class="mobile-sticky-bar">
+    <a href="tel:+33100000000" class="btn-outline flex-1 justify-center" style="padding: 12px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Appeler
+    </a>
+    <a href="#home-contact" class="btn-primary flex-1 justify-center" style="padding: 12px;">
+        Nous contacter
+    </a>
+</div>
 
 <script>
     function toggleMenu() { document.getElementById('menuPanel').classList.toggle('open'); }
